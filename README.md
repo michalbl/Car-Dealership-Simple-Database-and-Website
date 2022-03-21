@@ -4,6 +4,8 @@
 Install MariaDB (on Mac: brew install mariadb)  
 Once installed, run the .sql file in the 'database-seeders' folder
 
+All SQL queries are located in server.js
+
 ## Setup web app
 Ensure Node JS is installed  
 Open the CLI:  
@@ -14,4 +16,3 @@ Navigate to the folder where package.json is located
 App should be running on http://localhost:8080
 
 
-All SQL queries are located in server.js
