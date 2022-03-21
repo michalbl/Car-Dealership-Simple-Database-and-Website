@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Ramblin Wrecks</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+<div class="homepage">
+    <h1>Burdell's Ramblin Wrecks</h1>
+    <div class="search">
+        <h2>Privileged Search</h2><br>
+        <div id="vehicle-count"></div>
+        <div id="repair-count"></div><br>
+        <form action="/api/vinsearch" method="GET" class="search-form">
+            VIN<input name="vin" type="text"><br>
+            <input value="Search" type="submit" id="search-submit">
+        </form>
+        <form action="/api/vehiclesearch" method="GET" class="search-form">
+            Vehicle Type<input name="vehicleType" type="text"> <br>
+            Manufacturer<input name="manufacturer" type="text"><br>
+            Year<input name="modelYear" type="text"><br>
+            Color<input name="color" type="text"><br>
+            <input value="Search" type="submit" id="search-submit">
+        </form>
+         <form action="/api/vehiclesearch" method="GET" class="search-form">
+             Keyword<input name="keyword" type="text"><br>
+            <input value="Search" type="submit" id="search-submit">
+        </form>
+    </div>
+    <% if(usertype === 'inventoryclerk') { %>
+        <div class="add-vehicle-link">
+                <form action="views/SearchCustomer.html">
+                     <input type="submit" value="Add vehicles" />
+        </div>
+    <% } %>
+    <% if(usertype === 'manager') { %>
+        <form action="views/reports.html">
+            <input type="submit" value="Go to reports" />
+    <% } %>
+    <% if(usertype === 'burdell') { %>
+        <hr>
+        <div class="add-vehicle-link">
+            <form action="views/SearchCustomer.html">
+                 <input type="submit" value="Add vehicles" />
+        
+        <hr>
+        </div>
+        <form action="views/reports.html">
+            <input type="submit" value="Go to reports" />
+    <% } %>
+
+</div>
+
+<script>
+    $.get('/api/vehiclecount', (data) => {
+        document.getElementById('vehicle-count').innerHTML = `Vehicles in Stock: ${data}`
+    });
+
+    $.get('/api/repaircount', (data) => {
+        document.getElementById('repair-count').innerHTML = `Vehicles with Pending Repairs: ${data}`
+    })
+</script>
+</body>
+
+</html>

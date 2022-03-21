@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ramblin Wrecks</title>
+        <link rel="stylesheet" href="../css/main.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="search-customer-page">
+            <h1>Burdell's Ramblin Wrecks</h1>
+            <h2>Search Customer</h2>
+            <h3>Enter TaxID or Driver's License Number</h3>
+            <div class="customer-selection">
+                <form action="/api/searchcustomer" method="GET" class="customer-search">
+                    <div class="customer-text"></div>
+                    <input type="text" name="customerid">
+                    <input type="submit" value="Submit" id="search-submit">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

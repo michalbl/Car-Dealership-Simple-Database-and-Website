@@ -1,0 +1,66 @@
+* {
+  font-family: Arial;
+}
+
+table, tr, td{
+    text-align: center;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+tr:hover {background-color:#f5f5f5;}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+#login-submit {
+    width: 75px;
+    margin-top: 20px;
+}
+
+#vehicle-count {
+    margin-bottom: 10px;
+}
+
+.search, .customer-text, .vendor-text {
+    margin-top: 30px;
+}
+
+.search h2 {
+    margin-bottom: 0px;
+}
+
+.search-form, .add-customer-form, .add-vehicle-form, .add-repair-form, .add-vendor-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.search, .add-customer-form, .add-vehicle-form, .add-repair-form, .add-vendor-form input {
+    width: 300px;
+}
+
+#search-submit {
+    width: 75px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.report-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+#report-submit {
+    width: 150px;
+    margin-top: -20px;
+}
+
+.repair-status {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}

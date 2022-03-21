@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ramblin Wrecks</title>
+        <link rel="stylesheet" href="../css/main.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="add-vendor">
+            <h1>Burdell's Ramblin Wrecks</h1>
+            <h2>Add Vendor</h2>
+            <form action="/api/addvendor" method="POST" class="add-vendor-form">
+                Vendor&nbspName<input name="vendorname" type="text">
+                Phone<input name="phone" type="text">
+                State<input name="state" type="text">
+                Street<input name="street" type="text">
+                City<input name="city" type="text">
+                Zip<input name="zip" type="text">
+                <input value="Submit" type="submit" id="search-submit">
+            </form>
+        </div>
+    </body>
+</html>

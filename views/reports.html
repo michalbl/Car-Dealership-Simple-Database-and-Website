@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Ramblin Wrecks</title>
+    <link rel="stylesheet" href="../css/main.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+<div class="homepage">
+    <h1>REPORTS</h1>
+    <hr>
+    <h3>Seller History</h3>
+            <div class="search">
+                <div id="seller-history"></div>
+                <form action="/reports/seller-history" method="GET" class="report-form">
+                    <input value="Generate Report" type="submit" id="report-submit">
+                </form>
+<hr>
+    <h3>Inventory Age</h3>
+        <div class="search">
+            <div id="inventory-age"></div>
+            <form action="/reports/invenotry-age" method="GET" class="report-form">
+                <input value="Generate Report" type="submit" id="report-submit">
+            </form>
+            <hr>
+    <h3>Average Time in Inventory</h3>
+        <div class="search">
+            <div id="ave-time-in-invetory"></div>
+            <form action="/reports/ave-time-in-invetory" method="GET" class="report-form">
+                <input value="Generate Report" type="submit" id="report-submit">
+            </form>
+            <hr>
+    <h3>Price per Condition</h3>
+        <div class="search">
+            <div id="price-per-condition"></div>
+            <form action="/reports/price-per-condition" method="GET" class="report-form">
+                <input value="Generate Report" type="submit" id="report-submit">
+            </form>
+            <hr>
+    <h3>Repair Statistics</h3>
+        <div class="search">
+            <div id="repair-stat"></div>
+            <form action="/reports/repair-stat" method="GET" class="report-form">
+                <input value="Generate Report" type="submit" id="report-submit">
+            </form>
+            <hr>
+
+
+    <h3>Monthly Sales</h3>
+            <div class="search">
+                <div id="monthly-sales1"></div>
+                <form action="/reports/monthlysales1" method="GET" class="report-form">
+                    <input value="Generate Report_1" type="submit" id="report-submit">
+                </form>
+                <div class="search">
+                    <div id="monthly-sales2"></div>
+                    <form action="/reports/monthlysales2" method="GET" class="report-form">
+                        <input value="Generate Report_2" type="submit" id="report-submit">
+                    </form>
+                    <hr>
+<script>
+    $.get('/api/vehiclecount', (data) => {
+        document.getElementById('vehicle-count').innerHTML = `Number Vehicles in Stock: ${data}`
+    });
+</script>
+</body>
+
+</html>

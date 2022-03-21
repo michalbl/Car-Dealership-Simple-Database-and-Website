@@ -1,0 +1,42 @@
+<head>
+    <meta charset="utf-8">
+    <title>Ramblin Wrecks</title>
+    <link rel="stylesheet" href="../css/main.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="search-results">
+        <h1>Vehicle Search Results</h1>
+        <% if(vehicles.length === 0) { %>
+            <h2>Sorry, it looks like that vehicle is either not in stock or not for sale!</h2>
+        <% } else { %>
+        <table>
+            <tr>
+                <th>VIN</th>
+                <th>Vehicle Type</th>
+                <th>Model Year</th>
+                <th>Manufacturer</th>
+                <th>Color</th>
+                <th>Model</th>
+                <th>Mileage</th>
+                <th>Sales Price</th>
+                <th>Details</th>
+            </tr>
+                <% vehicles.forEach((v) => { %>
+                    <tr>
+                        <td><%= v.VIN %></td>
+                        <td><%= v.VehicleType %></td>
+                        <td><%= v.ModelYear %></td>
+                        <td><%= v.Manufacturer %></td>
+                        <td><%= v.Color %></td>
+                        <td><%= v.Model %></td>
+                        <td><%= v.Mileage %></td>
+                        <td>$<%= v.SalesPrice %></td>
+                        <%- `<td><a href="/api/vehicledetails?vin=${v.VIN}">Details</a></td>` %>
+                    </tr>
+                <%  }); %>
+        </table>
+    <% } %> 
+    </div>
+</body>

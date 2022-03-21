@@ -1,0 +1,108 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Ramblin Wrecks</title>
+        <link rel="stylesheet" href="../css/main.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <div class="vehicle-details">
+            <h1>Vehicle Details</h1>
+            <table>
+                <tr>
+                    <th>VIN</th>
+                    <th>Vehicle Type</th>
+                    <th>Model Year</th>
+                    <th>Manufacturer</th>
+                    <th>Color</th>
+                    <th>Model</th>
+                    <th>Mileage</th>
+                    <th>Sales Price</th>
+                    <% if (usertype === 'inventoryclerk') { %>
+                        <th>Original Purchase Price</th>
+                    <% } %>
+                    <th>Description</th>
+                     <% if (usertype === 'salesperson') { %>
+                        <th>Sell Vehicle</th>
+                    <% } %>                  
+                </tr>
+                <tr>
+                    <td id="vin"><%= vehicle.VIN %></td>
+                    <td><%= vehicle.VehicleType %></td>
+                    <td><%= vehicle.ModelYear %></td>
+                    <td><%= vehicle.Manufacturer %></td>
+                    <td><%= vehicle.Color %></td>
+                    <td><%= vehicle.Model %></td>
+                    <td><%= vehicle.Mileage %></td>
+                    <td>$<%= vehicle.SalesPrice %></td>
+                    <% if (usertype === 'inventoryclerk') { %>
+                        <td>$<%= vehicle.SellPrice %></td>
+                    <% } %>
+                    <td><%= vehicle.VehicleDescription %></td>
+					 <% if (usertype === 'salesperson') { %>
+						<%- `<td><a href="/api/vehiclesalecustomerlookup?vin=${vehicle.VIN}&salesprice=${vehicle.SalesPrice}">Here</a></td>` %>
+					<% } %>  
+				</tr>
+            </table>
+            <% if (usertype === 'inventoryclerk') { %>
+                <% if (repairs) { %>
+                    <div class="repairs">
+                        <h2>Repairs</h2>
+                        <table>
+                            <tr>
+                                <th>Vendor</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Status</th>
+                                <th>Repair Description</th>
+                                <th>Cost</th>
+                                <th>Recall Number</th>
+                                <th>Recall Description</th>
+                            </tr>
+                            <% repairs.forEach((r) => { %>
+                                <tr>
+                                    <td><%= r.VendorName %></td>
+                                    <td id="repair-start"><%= r.StartDate %></td>
+                                    <td><%= r.EndDate %></td>
+                                    <td class="repair-status" id="repair-status-<%= r.StartDate %>" onclick=<%- `updateRepairStatus('${r.StartDate}')` %>><%= r.RepairStatus %></td>
+                                    <td><%= r.RepairDescription %></td>
+                                    <td>$<%= r.TotalCost %></td>
+                                    <td><%= r.CampaignNumber || '' %></td>
+                                    <td><%= r.RecallDescription || '' %></td>
+                                </tr>
+                            <%  }); %>
+                        </table>
+                        <h3>Total Repair Cost = $<%= totalrepaircost %></h3>
+                    </div>
+                    <% } else { %>
+                        <h3>Total Repair Cost: $0</h3>
+                    <% } %>
+                    <div class="add-repair-link">
+                        <a href="../views/SearchVendor.html">Add Repair</a>
+                    </div>
+            <% } %>
+        </div>
+        <script>
+            function updateRepairStatus(startDate) {
+                let currentStatus = document.getElementById('repair-status-' + startDate).innerHTML.toString();
+
+                if (currentStatus === 'pending') {
+                    currentStatus = 'in progress'
+                } else if (currentStatus === 'in progress') {
+                    currentStatus = 'completed'
+                } else if (currentStatus === 'completed') {
+                    return;
+                }
+
+                $.post('/api/updaterepairstatus', {
+                    vin: document.getElementById('vin').innerHTML,
+                    repairstart: startDate,
+                    repairstatus: currentStatus
+                }, (data) => {
+                    document.getElementById('repair-status-' + startDate).innerHTML = currentStatus
+                });
+            }
+        </script>
+    </body>
+</html>

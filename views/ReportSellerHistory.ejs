@@ -1,0 +1,40 @@
+<head>
+    <meta charset="utf-8">
+    <title>Ramblin Wrecks</title>
+    <link rel="stylesheet" href="../css/main.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="search-results">
+        <h1>Seller History Report</h1>
+        <% if(vehicles.length === 0) { %>
+            <h2>Sorry, it looks like we don’t have that in stock!</h2>
+        <% } else { %>
+        <table>
+            <tr>
+                <th>CustomerID</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Bussines Name</th>
+                <th>AvePurchPrice</th>
+                <th>NoOfVehiclesSold</th>
+                <th>AveRepairsperVehicle</th>
+                
+            </tr>
+                <% vehicles.forEach((v) => { %>
+                    <tr>
+                        <td><%= v.CustomerID %></td>
+                        <td><%= v.LastName %></td>
+                        <td><%= v.FirstName %></td>
+                        <td><%= v.BusinessName %></td>
+                        <td><%= v.AvePurchPrice %></td>
+                        <td><%= v.NoOfVehiclesSold %></td>
+                        <td><%= v.AveRepairsperVehicle %></td>
+            
+                    </tr>
+                <%  }); %>
+        </table>
+    <% } %> 
+    </div>
+</body>

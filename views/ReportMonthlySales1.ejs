@@ -1,0 +1,33 @@
+<head>
+    <meta charset="utf-8">
+    <title>Ramblin Wrecks</title>
+    <link rel="stylesheet" href="../css/main.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="search-results">
+        <h1>Monthly Sales Report 1</h1>
+        <% if(vehicles.length === 0) { %>
+            <h2>Sorry, it looks like we don’t have that in stock!</h2>
+        <% } else { %>
+        <table>
+            <tr>
+                <th>Month</th>
+                <th>NoOfVehSold</th>
+                <th>TotalIncome</th>
+                <th>NetIncome</th>
+
+            </tr>
+                <% vehicles.forEach((v) => { %>
+                    <tr>
+                        <td><%= v.date %></td>
+                        <td><%= v.NoOfVehSold %></td>
+                        <td><%= v.TotalIncome %></td>
+                        <td><%= v.Income %></td>
+                    </tr>
+                <%  }); %>
+        </table>
+    <% } %> 
+    </div>
+</body>

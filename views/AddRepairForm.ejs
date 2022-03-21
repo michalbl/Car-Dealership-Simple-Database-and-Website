@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ramblin Wrecks</title>
+        <link rel="stylesheet" href="../css/main.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="homepage">
+            <h1>Burdell's Ramblin Wrecks</h1>
+            <h2>Add Repair</h2>
+            <form action="/api/addrepair" method="POST" class="add-repair-form">
+                VIN<input name="vin" value="<%= vin %>" type="text" readonly>
+                Vendor&nbspName<input name="vendorname" value="<%= vendorname %>" type="text" readonly>
+                Total&nbspCost<input name="cost" type="text">
+                Start&nbspDate&nbsp(yyyy-mm-dd)<input name="startdate" type="text">
+                End&nbspDate&nbsp(yyyy-mm-dd)<input name="enddate" type="text">
+                Description<input name="description" type="text">
+                Campaign&nbspNumber<input name="campaign" type="text">
+                <input value="Submit" type="submit" id="search-submit">
+            </form>
+        </div>
+    </body>
+</html>

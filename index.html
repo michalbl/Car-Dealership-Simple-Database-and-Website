@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ramblin Wrecks</title>
+        <link rel="stylesheet" href="css/main.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    </head>
+    <script>
+        $.get('/api/clearuser', (data) => {
+            console.log('cleared user state')
+        })
+    </script>
+    <body>
+        <div class="homepage">
+            <h1>Ramblin Wrecks Project Website Team 21</h1>
+            <h2>Login</h2>
+            <form action="/login", method="post" class="login-form">
+                Username<input name="username" type="text">
+                Password<input name="password" type="password">
+                <input value="Submit" type="submit" id="login-submit">
+            </form>
+            <div class="search">
+                <h2>Public Search</h2>
+                <div id="vehicle-count"></div>
+                <form action="/api/vehiclesearch" method="GET" class="search-form">
+                    Vehicle Type<input name="vehicleType" type="text">
+                    Manufacturer<input name="manufacturer" type="text">
+                    Year<input name="modelYear" type="text">
+                    Color<input name="color" type="text">
+                    <input value="Submit" type="submit" id="search-submit">
+                </form>
+                <form action="/api/vehiclesearchkeyword" method="GET" class="search-form">
+                    Keyword<input name="keyword" type="text">
+                    <input value="Submit" type="submit" id="search-submit">
+                </form>
+            </div>
+        </div>
+        <script>
+            $.get('/api/vehiclecount', (data) => {
+                document.getElementById('vehicle-count').innerHTML = `Number Vehicles in Stock: ${data}`
+            });
+        </script>
+    </body>
+</html>

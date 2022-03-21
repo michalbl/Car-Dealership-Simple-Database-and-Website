@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Ramblin Wrecks</title>
+        <link rel="stylesheet" href="../css/main.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="add-customer-page">
+            <h1>Add Customer Form</h1>
+            <h2>Customer Not Found!!</h2><br>
+            <h2>Business Customer</h2>
+            <div class="search">
+                <div id="BusinessCustomer"></div>
+                <form action="/api/addbusiness" method="POST" class="search-form">
+                    Tax ID<input name="taxid" type="text">
+                    Email<input name="email" type="text">
+                    Phone<input name="phone" type="text">
+                    Street<input name="street" type="text">
+                    City<input name="city" type="text">
+                    State<input name="state" type="text">
+                    Postal Code<input name="postal" type="text">
+                    First Name<input name="first" type="text">
+                    Last Name<input name="last" type="text">
+                    Title<input name="title" type="text">
+                    Business Name<input name="business" type="text">
+                    <input value="Submit" type="submit" id="search-submit">
+                </form>
+            <h2>Individual Customer</h2>	
+            <div class="search">
+                <div id="Customer"></div>
+                <form action="/api/addindividual" method="POST" class="search-form">
+                    Driver's License<input name="dlid" type="text">
+                    Email<input name="email" type="text">
+                    Phone<input name="phone" type="text">
+                    Street<input name="street" type="text">
+                    City<input name="city" type="text">
+                    State<input name="state" type="text">
+                    Postal Code<input name="postal" type="text">
+                    First Name<input name="first" type="text">
+                    Last Name<input name="last" type="text">
+                    <input value="Submit" type="submit" id="search-submit">
+                </form>
+            </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ramblin Wrecks</title>
+        <link rel="stylesheet" href="../css/main.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="add-vehicle-page">
+            <h1>Burdell's Ramblin Wrecks</h1>
+            <h2>Add Vehicle</h2>
+            <p>Customer:&nbsp&nbsp<%= customer.type + ' ' %><%= customer.first + ' ' %><%= customer.last || '' %></p>
+            <form action="/api/addvehicle" method="POST" class="add-vehicle-form">
+                VIN<input name="vin" type="text">
+                Vehicle&nbspType<input name="vehicletype" type="text">
+                Manufacturer<input name="manufacturer" type="text">
+                Model<input name="model" type="text">
+                Mileage<input name="mileage" type="text">
+                Description<input name="description" type="text">
+                Color<input name="color" type="text">
+                Year<input name="year" type="text">
+                Vehicle&nbspCondition<input name="condition" type="text">
+                Buy&nbspPrice<input name="price", type="text">
+                <input value="Submit" type="submit" id="search-submit">
+            </form>
+        </div>
+    </body>
+</html>
