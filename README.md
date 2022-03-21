@@ -14,3 +14,4 @@ Navigate to the folder where package.json is located
 App should be running on http://localhost:8080
 
 
+All SQL queries are located in server.js
