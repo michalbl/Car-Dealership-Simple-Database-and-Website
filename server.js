@@ -550,8 +550,10 @@ server.get('/api/vehiclesale', (req, res) => {
 
 
 
-
+//////////////////
 // REPORTS QUERIES
+//////////////////
+
 server.get('/reports/seller-history', (req, res) => {
     db.query(
         `SELECT Customers.CustomerID, IFNULL(LastName,'---') AS LastName, IFNULL(FirstName,'---') AS FirstName, IFNULL(BusinessName, '---') AS BusinessName, ROUND(AVG(SellPrice),0) AS AvePurchPrice,
